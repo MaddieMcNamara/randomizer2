@@ -47,7 +47,7 @@ button.mousePressed(buttonPressed);
 function draw() {
 
   if (animating == true) {
-    background(255, 200);
+    clear();
     image(travels[imageCounter], width / 2, height / 2);
 
     if (imageCounter < travels.length) {
@@ -78,7 +78,7 @@ function randomizer() {
   animating = false;
   if (places[0]) {
 
-    background(255, 200);
+    clear();
     randomIndex = int(random(places.length));
     text(places[randomIndex].where, width / 2.3, height / 5);
     image(random(travels), width / 2, height / 2);
