@@ -1,20 +1,30 @@
-let dogs = [{
-  name: "mia",
-  color: "red"
+let places = [{
+  where: "Paris",
+  budget: "red"
 }, {
-  name: "apple",
-  color: "blue"
+  where: "Dubai",
+  budget: "green"
+}, {
+  where: "Japan",
+  budget: "blue"
+}, {
+  where: "New York",
+  budget: "what"
+}, {
+  where: "Las Vegas",
+  budget: "who"
+
 }];
 
 let randomIndex;
 let animating = false;
-let trolls = [];
+let travels = [];
 let imageCounter = 0;
 
-function preload(){
+function preload() {
 
-  for (let i = 0; i <= 2; i++){
-trolls[i] = loadImage('assets/travel_.jpg');
+  for (let i = 0; i <= 4; i++) {
+    travels[i] = loadImage("assets/travel_" + (i + 1) + ".jpg");
 
   }
 }
@@ -27,66 +37,64 @@ function setup() {
   imageMode(CENTER);
   frameRate(12);
 
-  console.log(trolls);
+button = createButton("Click Here");
+button.mousePressed(buttonPressed);
 
-// setTimeout(changeBackground, 1000);
+  // setTimeout(changeBackground, 1000);
 
 }
 
 function draw() {
 
-if(animating == true) {
-  clear();
-  image(trolls[imageCounter], width/2, height/2);
-image(trolls[0], width/2, height/2);
+  if (animating == true) {
+    background(255, 200);
+    image(travels[imageCounter], width / 2, height / 2);
 
-if (imageCounter < trolls.length - 1){
-imageCounter++;
-console.log(imageCounter);
-} else {
+    if (imageCounter < travels.length) {
+      imageCounter++;
+      console.log(imageCounter);
 
-imageCounter = 0;
-}
+    } else {
 
-}
+      imageCounter = 0;
+    }
+    // image(travels[0], width/2, height/2);
 
-}
-// function changeBackground() {
-//
-// if (counter <= 5) {
-// counter++;
-// console.log(counter)
-//
-//
-//   background(random(255), random(255), random(255));
-//   settimeout(changeBackground, 1000);
-// }
-function randomizer() {
+    if (imageCounter < travels.length - 1) {
+      imageCounter++;
+      console.log(imageCounter);
+    } else {
 
-  animating = false;
-  if (dogs[0]); {
-
-  clear(12);
-    randomIndex = int(random(dogs.length));
-    text(`${dogs[randomIndex].name}'s favorite color is
-    ${dogs[randomIndex].color}`, width / 2, height - 25);
-      image(random(trolls), width / 2, height / 2);
-
-
-    // text(dogs[randomIndex].name + "'s favorite color is" 50, 50);
-    // dogs[randomIndex].color, 50, 50);
-
-
-    dogs.splice(randomIndex, 1);
+      imageCounter = 0;
+    }
 
   }
 
 }
 
-function mousePressed() {
+function randomizer() {
+
+
+  animating = false;
+  if (places[0]) {
+
+    background(255, 200);
+    randomIndex = int(random(places.length));
+    text(places[randomIndex].where, width / 2.3, height / 5);
+    image(random(travels), width / 2, height / 2);
+
+
+
+    places.splice(randomIndex, 1);
+
+  }
+
+}
+
+function buttonPressed() {
   animating = true;
 
-setTimeout(randomizer, 2000);
+  setTimeout(randomizer, 2000);
 
 
 
